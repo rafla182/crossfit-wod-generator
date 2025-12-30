@@ -32,15 +32,24 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
   
-  // Configure CORS - Allow requests from Vercel and localhost
+  // Configure CORS - Allow requests from Vercel, Railway, and localhost
+  const corsOrigins = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://crossfit-wod-generator.vercel.app",
+    "https://*.vercel.app",
+  ];
+  
+  // Add VERCEL_URL if available (for Vercel preview deployments)
+  if (process.env.VERCEL_URL) {
+    corsOrigins.push(`https://${process.env.VERCEL_URL}`);
+  }
+  
   app.use(cors({
-    origin: [
-      "http://localhost:5173",
-      "http://localhost:3000",
-      "https://crossfit-wod-generator.vercel.app",
-      process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
-    ].filter(Boolean),
+    origin: corsOrigins,
     credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
   }));
   
   // Configure body parser with larger size limit for file uploads
