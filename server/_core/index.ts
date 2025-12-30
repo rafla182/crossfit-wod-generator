@@ -50,19 +50,10 @@ async function startServer() {
     serveStatic(app);
   }
 
-  // Use exactly the PORT provided by the environment if set (Railway requires this).
-  const preferredPort = parseInt(process.env.PORT || "3000", 10);
-  let port: number;
+  const preferredPort = parseInt(process.env.PORT || "3000");
+  const port = await findAvailablePort(preferredPort);
 
-  if (process.env.PORT) {
-    // When running on a platform like Railway, use the provided PORT without probing.
-    port = preferredPort;
-  } else {
-    // local environment: attempt to find an available port starting at preferredPort
-    port = await findAvailablePort(preferredPort);
-  }
-
-  if (port !== preferredPort && !process.env.PORT) {
+  if (port !== preferredPort) {
     console.log(`Port ${preferredPort} is busy, using port ${port} instead`);
   }
 
