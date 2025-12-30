@@ -10,10 +10,13 @@
     "node": ">=20"
   },
   "dependencies": {
-   "typescript": "^5.9.3",
-  "express": "^4.21.2",
-  "@trpc/server": "^11.6.0",
-  "zod": "^4.1.12",
-  "cors": "^2.8.5"
+    "@trpc/server": "^11.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.22.1",
+    "typescript": "^5.9.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
   }
 }
