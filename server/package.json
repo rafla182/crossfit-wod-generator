@@ -8,5 +8,9 @@
   },
   "engines": {
     "node": ">=20"
-  }
+  },
+  "devDependencies": {
+  "typescript": "^5.x"
+}
+
 }
