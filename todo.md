@@ -29,3 +29,14 @@
 ## Deploy
 - [x] Criar checkpoint final
 - [x] Entregar ao usuário
+
+## Tradução para Português
+- [x] Traduzir textos da landing page (Home.tsx)
+- [x] Traduzir textos da página de gerador (WODGenerator.tsx)
+- [x] Traduzir labels e placeholders do formulário
+- [x] Traduzir mensagens de sucesso/erro (toast)
+
+## Remover Autenticação
+- [x] Remover verificação de autenticação da Home.tsx
+- [x] Remover verificação de autenticação do WODGenerator.tsx
+- [x] Permitir acesso direto ao gerador sem login
