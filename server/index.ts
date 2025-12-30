@@ -26,8 +26,12 @@ async function startServer() {
   const port = process.env.PORT || 3000;
 
   server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+    console.log(`Server running on port ${port}`);
+    if (process.env.RAILWAY_STATIC_URL) {
+      console.log(`Public URL: ${process.env.RAILWAY_STATIC_URL}`);
+    }
   });
+
 }
 
 startServer().catch(console.error);
