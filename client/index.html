@@ -1,19 +1,12 @@
-<!--
 <script type="module">
-  const endpoint = "%VITE_ANALYTICS_ENDPOINT%";
-  const websiteId = "%VITE_ANALYTICS_WEBSITE_ID%";
-
-  if (
-    endpoint &&
-    websiteId &&
-    !endpoint.includes("VITE_ANALYTICS") &&
-    !websiteId.includes("VITE_ANALYTICS")
-  ) {
-    const script = document.createElement("script");
-    script.defer = true;
-    script.src = `${endpoint}/umami`;
-    script.setAttribute("data-website-id", websiteId);
-    document.body.appendChild(script);
+  if (import.meta.env.VITE_ANALYTICS_ENDPOINT) {
+    const s = document.createElement("script");
+    s.defer = true;
+    s.src = `${import.meta.env.VITE_ANALYTICS_ENDPOINT}/umami`;
+    s.setAttribute(
+      "data-website-id",
+      import.meta.env.VITE_ANALYTICS_WEBSITE_ID
+    );
+    document.head.appendChild(s);
   }
 </script>
--->
